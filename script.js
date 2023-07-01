@@ -11,6 +11,8 @@ let disableDeck = false;
 let isPlaying = false;
 let cardOne, cardTwo, timer;
 
+
+//calculate time
 function initTimer() {
     if(timeLeft <= 0) {
         return clearInterval(timer);
@@ -19,6 +21,7 @@ function initTimer() {
     timeTag.innerText = timeLeft;
 }
 
+//flip card and check if same or not
 function flipCard({target: clickedCard}) {
     if(!isPlaying) {
         isPlaying = true;
@@ -39,7 +42,7 @@ function flipCard({target: clickedCard}) {
     }
 }
 
-
+//matching card to check
 function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
@@ -52,6 +55,7 @@ function matchCards(img1, img2) {
         return disableDeck = false;
     }
 
+    //timeout 
     setTimeout(() => {
         cardOne.classList.add("shake");
         cardTwo.classList.add("shake");
@@ -65,6 +69,8 @@ function matchCards(img1, img2) {
     }, 1200);
 }
 
+
+//shuffle card using array
 function shuffleCard() {
     timeLeft = maxTime;
     flips = matchedCard = 0;
